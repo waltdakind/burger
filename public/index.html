@@ -1,0 +1,75 @@
+<!-- Latest compiled and minified JS -->
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS & JS -->
+<link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Burger Eater</title>
+
+</head>
+
+<body>
+<div class="container">
+
+
+    <div class="row">
+        <form action="" method="post" role="form">
+
+
+            <div class="form-group">
+                <label for="burgerAdd"></label>
+                <input type="text" class="form-control" name="" id="burgerName" placeholder="Input Burger name here...">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+<div class="row"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="well well-sm" id="burgersNotEaten"></div></div>
+    <div class="row"><div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class="well well-sm" id="burgersEaten"></div></div>
+
+
+
+
+</div>
+
+
+</div>
+	<script type="text/javascript">
+
+    // Code here handles what happens when a user submits a new character on the form.
+    // Effectively it takes the form inputs then sends it to the server to save in the DB.
+
+    $(addBtn).on("click", function(){
+
+        var newBurger =
+        {
+            burgerName: $("#burgerName").val().trim()
+
+        };
+
+        var currentURL = window.location.origin;
+
+        $.post( currentURL + "/api/new", newBurger)
+                .done(function(data){
+                    console.log(data);
+                    alert("Adding burger...")
+                })
+//clear contents of box
+        $('#burgerName').val("");
+
+
+        return false;
+
+    });
+
+</script>
+</body>
+</html>
+
