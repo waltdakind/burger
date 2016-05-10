@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - burgers_db@localhost" uuid="e8f70b17-f5fa-462f-8717-3a560440ee94">
+    <data-source name="MySQL - tknix3ip4h0f9cdv@l9dwvv6j64hlhpul.cbetxkdyhwsb.us-east-1.rds.amazonaws.com" uuid="d4532308-6989-4287-ad89-0d3e7bced8e3">
       <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
+      <user-name>ot3bb31ozpuh5xe3</user-name>
+      <schema-pattern>tknix3ip4h0f9cdv.*</schema-pattern>
+      <default-schemas>tknix3ip4h0f9cdv.*</default-schemas>
     </data-source>
   </component>
 </project>

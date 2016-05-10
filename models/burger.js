@@ -1,16 +1,16 @@
 // *********************************************************************************
-// BURGER.JS - THIS FILE CREATES A MODELED OF INDIVIDUAL CHARACTERS IN DB
+// BURGER.JS - THIS FILE CREATES A MODE OF BURGERS IN DB
 // *********************************************************************************
 
-// Dependency
+// Dependencies
 
 // This may be confusing but here Sequelize (capital) references the standard library
 var Sequelize = require("sequelize");
 // sequelize (lowercase) references my connection to the DB. You could name it something else, but I was just following their convention.
-var connection = require("../config/connection.js");
+var sequelize = require("../config/connection.js");
 
-// Creates a "Character" model that matches up with DB
-var burger = sequelize.define("burger", {
+// Creates a "Burger" model that matches up with DB
+var Burger = sequelize.define("burger", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -27,11 +27,11 @@ var burger = sequelize.define("burger", {
     },
     date: {
         type: Sequelize.TIMESTAMP,
-    },
+    }
 });
 
 // Syncs with DB
-Character.sync();
+Burger.sync();
 
-// Makes the Character Model available for other files (will also create a table)
-module.exports = burger;
+// Makes the Burger Model available for other files (will also create a table)
+module.exports = Burger;

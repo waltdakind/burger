@@ -4,56 +4,74 @@
 
 // Dependencies
 // =============================================================
-var Character 	= require("../models/burger.js"); // Pulls out the Character Model
-
+var Burger = require("../models/burger.js"); // Pulls out the burger Model
+var path = require('path');
 // Routes
 // =============================================================
-module.exports = function(app){
+module.exports = function (app) {
 
     // Search for Specific Character (or all characters) then provides JSON
-    app.get('/api/:burger?', function(req, res){
+    app.get('/api/:burger?', function (req, res) {
 
         // If the user provides a specific character in the URL...
-        if(req.params.characters){
+        if (req.params.devouredBurgers) {
 
             // Then display the JSON for ONLY that character.
             // (Note how we're using the ORM here to run our searches)
-            Character.findAll({
+            burgerName.findAll({
                 where: {
-                    routeName: req.params.characters
+                    routeName: req.params.devouredeBurgers
                 }
-            }).then(function(result){
+            }).then(function (result) {
                 res.json(result);
             })
         }
 
         // Otherwise...
-        else{
+        else {
             // Otherwise display the data for all of the characters.
             // (Note how we're using Sequelize here to run our searches)
-            Character.findAll({})
-                .then(function(result){
+            Burger.findAll({})
+                .then(function (result) {
                     res.json(result);
                 })
-        };
-
+        }
     });
 
     // If a user sends data to add a new burger...
-    app.post('/api/new', function(req, res){
+    app.post('/api/new', function (req, res) {
 
         // Take the request...
-        var character = req.body;
+        var burger = req.body;
 
         // Create a routeName
-        var routeName = character.name.replace(/\s+/g, '').toLowerCase();
+        var routeName = burger.name.replace(/\s+/g, '').toLowerCase();
 
-        // Then add the character to the database using sequelize
+        // Then add the burger to the database using sequelize
         newBurger.create({
-            burgerName: character.name,
+            burgerName: burger.name,
             devoured: FALSE,
             date: CURRENT_TIMESTAMP
         });
 
     })
-}
+};
+
+// Routes
+// =============================================================
+module.exports = function (app) {
+
+    // Each of the below routes just handles the HTML page that the user gets sent to.
+    app.get('/', function (req, res) {
+        res.sendFile(path.join(__dirname + '/../public/index.html'));
+    });
+    //
+    // app.get('/add', function(req, res){
+    //     res.sendFile(path.join(__dirname + '/../public/add.html'));
+    // });
+    //
+    // app.get('/all', function(req, res){
+    //     res.sendFile(path.join(__dirname + '/../public/all.html'));
+    // });
+
+};
